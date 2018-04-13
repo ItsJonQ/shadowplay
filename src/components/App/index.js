@@ -117,6 +117,10 @@ export default class App extends Component {
               <input type='color' onChange={this.handleOnBackgroundColorChange} value={backgroundColor} />
             </label>
           </p>
+
+          <p>
+            Made super fast with ❤️ by <a href='https://jonquach.com'><strong>Q</strong></a>.
+          </p>
         </div>
       </div>
     )
