@@ -58,13 +58,14 @@ export default class App extends Component {
 
     const weight = shadowWeight / 100
     const color = makeShadowColor(shadowColor, weight)
+    const boxShadow = makeShadowStyles(shadowValue, color)
 
     const sandboxStyles = {
       backgroundColor
     }
     const squareStyles = {
       backgroundColor: cardColor,
-      boxShadow: makeShadowStyles(shadowValue, color)
+      boxShadow,
     }
 
     return (
@@ -91,6 +92,17 @@ export default class App extends Component {
               <input type='color' onChange={this.handleOnColorChange} value={shadowColor} />
             </label>
           </p>
+
+
+          <p>
+            <strong>Code</strong><br />
+            <code>
+              {`box-shadow: ${boxShadow}`}
+            </code>
+          </p>
+
+          <hr />
+
           <p>
             <label>
               <strong>Card Color</strong>

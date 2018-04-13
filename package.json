@@ -1,12 +1,16 @@
 {
-  "private": true,
+  "private": false,
   "name": "shadowplay",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build",
+    "copy": "cp files/CNAME build/CNAME",
+    "build:app": "preact build",
+    "build": "npm run build:app && npm run copy",
+    "deploy": "npm run build && npm run surge",
     "serve": "preact build && preact serve",
+    "surge": "surge build/",
     "dev": "preact watch",
     "lint": "eslint src",
     "test": "jest ./tests"
@@ -24,7 +28,8 @@
     "if-env": "^1.0.0",
     "jest": "^21.2.1",
     "preact-cli": "^2.1.0",
-    "preact-render-spy": "^1.2.1"
+    "preact-render-spy": "^1.2.1",
+    "surge": "0.20.1"
   },
   "dependencies": {
     "preact": "^8.2.6",

@@ -1,6 +1,6 @@
 {
-  "name": "shadowplay",
-  "short_name": "shadowplay",
+  "name": "ShadowPlay",
+  "short_name": "ShadowPlay",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
