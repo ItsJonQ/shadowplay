@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { SketchPicker } from 'react-color'
 import styles from './styles.css'
 
 const setValueFromInput = (component) => (event) => (value) => {
@@ -36,7 +37,8 @@ export default class App extends Component {
   }
 
   handleOnColorChange (event) {
-    setValueFromInput(this)(event)('shadowColor')
+    const shadowColor = event.hex
+    this.setState({ shadowColor })
   }
 
   handleOnControlChange (event) {
@@ -89,7 +91,7 @@ export default class App extends Component {
           <p>
             <label>
               <strong>Color</strong>
-              <input type='color' onChange={this.handleOnColorChange} value={shadowColor} />
+              <SketchPicker disableAlpha color={shadowColor} onChangeComplete={this.handleOnColorChange} />
             </label>
           </p>
 
