@@ -18,7 +18,7 @@ export default class App extends Component {
       cardColor: '#ffffff',
       shadowColor: '#000000',
       shadowOpacity: 0.2,
-      shadowValue: 50,
+      shadowSpread: 50,
       shadowWeight: 10
     }
     this.handleOnBackgroundColorChange = this.handleOnBackgroundColorChange.bind(this)
@@ -42,7 +42,7 @@ export default class App extends Component {
   }
 
   handleOnControlChange (event) {
-    setValueFromInput(this)(event)('shadowValue')
+    setValueFromInput(this)(event)('shadowSpread')
   }
 
   handleOnWeightChange (event) {
@@ -54,13 +54,13 @@ export default class App extends Component {
       backgroundColor,
       cardColor,
       shadowColor,
-      shadowValue,
+      shadowSpread,
       shadowWeight,
     } = this.state
 
     const weight = shadowWeight / 100
     const color = makeShadowColor(shadowColor, weight)
-    const boxShadow = makeShadowStyles(shadowValue, color)
+    const boxShadow = makeShadowStyles(shadowSpread, color)
 
     const sandboxStyles = {
       backgroundColor
@@ -76,51 +76,53 @@ export default class App extends Component {
           <div className={styles.Square} style={squareStyles}/>
         </div>
         <div className={styles.Controls}>
-          <p>
-            <label>
-              <strong>Amount</strong>
-              <input type='range' min={0} max={100} onInput={this.handleOnControlChange} value={shadowValue} />
-            </label>
-          </p>
-          <p>
-            <label>
-              <strong>Weight</strong>
-              <input type='range' min={0} max={40} onInput={this.handleOnWeightChange} value={shadowWeight} />
-            </label>
-          </p>
-          <p>
-            <label>
-              <strong>Color</strong>
-              <SketchPicker disableAlpha color={shadowColor} onChangeComplete={this.handleOnColorChange} />
-            </label>
-          </p>
+          <div className={styles.ControlsBody}>
+            <p>
+              <label>
+                <strong>Spread</strong>
+                <input type='range' min={0} max={100} onInput={this.handleOnControlChange} value={shadowSpread} />
+              </label>
+            </p>
+            <p>
+              <label>
+                <strong>Weight</strong>
+                <input type='range' min={0} max={40} onInput={this.handleOnWeightChange} value={shadowWeight} />
+              </label>
+            </p>
+            <p>
+              <label>
+                <strong>Color</strong>
+                <SketchPicker disableAlpha color={shadowColor} onChangeComplete={this.handleOnColorChange} />
+              </label>
+            </p>
 
 
-          <p>
-            <strong>Code</strong><br />
-            <code>
-              {`box-shadow: ${boxShadow}`}
-            </code>
-          </p>
+            <p>
+              <strong>Code</strong><br />
+              <code>
+                {`box-shadow: ${boxShadow}`}
+              </code>
+            </p>
 
-          <hr />
+            <hr />
 
-          <p>
-            <label>
-              <strong>Card Color</strong>
-              <input type='color' onChange={this.handleOnCardColorChange} value={cardColor} />
-            </label>
-          </p>
-          <p>
-            <label>
-              <strong>Background Color</strong>
-              <input type='color' onChange={this.handleOnBackgroundColorChange} value={backgroundColor} />
-            </label>
-          </p>
+            <p>
+              <label>
+                <strong>Card Color</strong>
+                <input type='color' onChange={this.handleOnCardColorChange} value={cardColor} />
+              </label>
+            </p>
+            <p>
+              <label>
+                <strong>Background Color</strong>
+                <input type='color' onChange={this.handleOnBackgroundColorChange} value={backgroundColor} />
+              </label>
+            </p>
 
-          <p>
-            Made super fast with ❤️ by <a href='https://jonquach.com'><strong>Q</strong></a>.
-          </p>
+            <p>
+              Made super fast, but with ❤️, by <a href='https://jonquach.com' target='_blank'><strong>Q</strong></a>.
+            </p>
+          </div>
         </div>
       </div>
     )

@@ -43,7 +43,10 @@ body {
 
 .Controls {
   box-shadow: rgba(33, 33, 33, 0.05) 0px 5.8px 11.6px, rgba(33, 33, 33, 0.05) 0px 11.6px 46.4px, rgba(33, 33, 33, 0.05) 0px 58px 174px;
+  overflow-y: auto;
   position: relative;
-  padding: 20px;
   z-index: 1;
+}
+.ControlsBody {
+  padding: 20px 20px 40px;
 }
