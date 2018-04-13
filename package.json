@@ -6,7 +6,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "copy": "cp files/CNAME build/CNAME",
-    "build:app": "preact build",
+    "build:app": "preact build --no-prerender",
     "build": "npm run build:app && npm run copy",
     "deploy": "npm run build && npm run surge",
     "serve": "preact build && preact serve",
